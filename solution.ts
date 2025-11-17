@@ -127,4 +127,42 @@ const myBook: Book = {
   isAvailable: false,
 };
 
-printBookDetails(myBook);
+// printBookDetails(myBook);
+
+
+//? ----------Problem-7-------------
+
+const getUniqueValues = (array1: (string | number)[], array2: (string | number)[]) =>{
+  const result: (string | number)[] = [];
+
+  for(let i = 0; i<array1.length; i++){
+    let dupHave = false;
+
+    for(let j =0; j<result.length; j++){
+      if (array1[i] === result[j]){
+        dupHave = true;
+      }
+    }
+    if (!dupHave){
+      result.push(array1[i])
+    }
+  }
+
+  for(let i = 0; i<array2.length; i++){
+    let dupHave = false;
+
+    for(let j =0; j<result.length; j++){
+      if (array2[i] === result[j]){
+        dupHave = true;
+      }
+    }
+    if (!dupHave){
+      result.push(array2[i])
+    }
+  }
+  return result;
+}
+
+const array1 = [1, 2, 3, 4, 5,6,8];
+const array2 = [3, 4, 5, 6, 7,8,9,10];
+console.log(getUniqueValues(array1, array2));
