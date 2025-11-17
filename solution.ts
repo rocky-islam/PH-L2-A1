@@ -1,4 +1,4 @@
-//?--------- problem-1-------------
+
 
 const formatValue = (
   value: string | number | boolean
@@ -14,11 +14,7 @@ const formatValue = (
   return value;
 };
 
-// console.log(formatValue('rocky'));
-// console.log(formatValue(1));
-// console.log(formatValue(false));
 
-//?-----------problem-2--------------
 
 const getLength = (value: string | number[]): number => {
   if (typeof value === "string") {
@@ -30,10 +26,7 @@ const getLength = (value: string | number[]): number => {
   return value;
 };
 
-// console.log(getLength('typescript'));
-// console.log(getLength([10, 20, 30, 40]));
 
-//?---------- Problem-3--------------
 class Person {
   name: string;
   age: number;
@@ -48,17 +41,6 @@ class Person {
   }
 }
 
-// const person1 = new Person("John Doe", 30);
-// console.log(person1.getDetails());
-
-// const person2 = new Person("Alice", 25);
-// console.log(person2.getDetails());
-
-// const person3 = new Person("Rocky", 26);
-// console.log(person3.getDetails());
-
-
-//? -------Problem-4--------------
 
 type Item = {
     title: string;
@@ -77,10 +59,6 @@ const books = [
   { title: 'Book e', rating: 3.9 },
 ];
 
-// console.log(filterByRating(books));
-
-
-//? ----------Problem-5-------------
 
 type User ={
     id: number;
@@ -101,10 +79,8 @@ const users = [
   { id: 5, name: 'Mask', email: 'mask@example.com', isActive: true },
 ];
 
-// console.log(filterActiveUsers(users));
 
 
-//? ----------Problem-6-------------
 
 interface Book {
   title: string;
@@ -127,25 +103,12 @@ const myBook: Book = {
   isAvailable: false,
 };
 
-// printBookDetails(myBook);
-
-
-//? ----------Problem-7-------------
 
 const getUniqueValues = (array1: (string | number)[], array2: (string | number)[]) =>{
   const result: (string | number)[] = [];
 
   for(let i = 0; i<array1.length; i++){
-    let dupHave = false;
-
-    for(let j =0; j<result.length; j++){
-      if (array1[i] === result[j]){
-        dupHave = true;
-      }
-    }
-    if (!dupHave){
-      result.push(array1[i])
-    }
+    result[result.length] = array1[i];
   }
 
   for(let i = 0; i<array2.length; i++){
@@ -157,12 +120,47 @@ const getUniqueValues = (array1: (string | number)[], array2: (string | number)[
       }
     }
     if (!dupHave){
-      result.push(array2[i])
+      result[result.length] = array2[i];
     }
   }
   return result;
 }
 
-const array1 = [1, 2, 3, 4, 5,6,8];
-const array2 = [3, 4, 5, 6, 7,8,9,10];
-console.log(getUniqueValues(array1, array2));
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+
+
+
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+const calculateTotalPrice = (products: Product[]): number =>{
+  if (products.length ===0) {
+    return 0;
+  }
+
+  return products.map(product =>{
+    const totalPrice = product.price * product.quantity;
+
+    if(product.discount !== undefined){
+      const discountPrice = (totalPrice*product.discount)/100;
+
+      return totalPrice - discountPrice;
+    }
+    return totalPrice;
+  }).reduce((totalPrice, currentPrice) =>{
+    return totalPrice + currentPrice;
+  },0)
+}
+
+const products = [
+  { name: 'Pen', price: 10, quantity: 2 },
+  { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+  { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+];
+
+
