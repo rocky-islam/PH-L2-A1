@@ -101,4 +101,30 @@ const users = [
   { id: 5, name: 'Mask', email: 'mask@example.com', isActive: true },
 ];
 
-console.log(filterActiveUsers(users));
+// console.log(filterActiveUsers(users));
+
+
+//? ----------Problem-6-------------
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+const printBookDetails = (book:Book) =>{
+
+  const available = book.isAvailable? "yes" : "no";
+
+  console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${available}`)
+}
+
+const myBook: Book = {
+  title: 'The Great Gatsby',
+  author: 'F. Scott Fitzgerald',
+  publishedYear: 1925,
+  isAvailable: false,
+};
+
+printBookDetails(myBook);
