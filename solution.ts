@@ -1,4 +1,4 @@
-//?--------- problem 1-------------
+//?--------- problem-1-------------
 
 const formatValue = (value: string | number | boolean) : string | number | boolean =>{
     if(typeof value === "string"){
@@ -15,6 +15,25 @@ const formatValue = (value: string | number | boolean) : string | number | boole
     return value;
 }
 
-console.log(formatValue('hello'));
-console.log(formatValue(5));
-console.log(formatValue(true));
+// console.log(formatValue('rocky'));
+// console.log(formatValue(1));
+// console.log(formatValue(false));
+
+
+
+//?-----------problem-2--------------
+
+const getLength = (value: string | number[]):number =>{
+    if(typeof value === "string"){
+        return value.length;
+    }
+
+    else if(Array.isArray(value)){
+        return value.length;
+    }
+
+    return value;
+}
+
+console.log(getLength('typescript'));
+console.log(getLength([10, 20, 30, 40]));
